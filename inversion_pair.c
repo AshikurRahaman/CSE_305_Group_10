@@ -1,28 +1,38 @@
 #include<stdio.h>
-int Find_key(int Arr[],int last_index)
+
+int Inversion_pair(int Arr[],int x) ///x=last index
+
 {
-    int key,i;
-    int big_inversion_pair=Inversion_pair(Arr,last_index);
-    key=last_index;
-    for(i=last_index-1;i>=0;i--)
+
+    int inversion_pair=0,i,small;
+
+    small=Arr[x];
+
+    for(i=x-1;i>=0;i--)
+
     {
 
-        if(Arr[i]<Arr[key])
-        {
-            int new_inversion_pair=Inversion_pair(Arr,i);
-            if(new_inversion_pair>big_inversion_pair)
-            {
-                big_inversion_pair=new_inversion_pair;
-                key=i;
-            }
-        }
+        if(Arr[i]>small)
+
+            inversion_pair++;
+
     }
 
-    return key;
+    return inversion_pair;
+
 }
-int main ()
 
+int main()
 {
-    int Find_key(int Arr[],int last_index);
-
+    int n,i;
+    printf("Enter element:\n");
+    scanf("%d",&n);
+    int A[n];
+    for(i=0;i<n;i++)
+        scanf("%d",&A[i]);
+    int s;
+    printf("enter element index to check inversion pair\n");
+    scanf("%d",&s);
+    int x=Inversion_pair(A,s);
+    printf("%d has %d inversion pair\n",A[s],x);
 }
